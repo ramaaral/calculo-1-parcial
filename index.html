@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0F2C59">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Cálculo 1">
+  <title>Cálculo 1 — Guía primer parcial</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./icon.svg">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="appbar">
+    <div class="appbar-row">
+      <div class="brand">CÁLCULO 1 <small>CDIV · FING Udelar · 29/09/2026</small></div>
+      <div class="actions">
+        <button class="btn ghost" id="btnTop" type="button">Inicio</button>
+        <button class="btn" id="btnInstall" type="button">Instalar</button>
+      </div>
+    </div>
+    <input class="search" id="q" type="search" placeholder="Buscar tema, fórmula o trampa…">
+  </header>
+  <main class="wrap">
+    <div class="hero" id="inicio">
+      <h1>Guía de resolución</h1>
+      <p>Primer parcial de Cálculo 1. Semanas 1–6, prácticos 0 a 4. Sin Bolzano, Weierstrass ni derivadas. Tocá un tema o buscá arriba.</p>
+    </div>
+    <div class="grid" id="mapa">
+      <a class="tile" href="#conjuntos"><i class="dot c-teal"></i><b>01 Conjuntos</b><span>Intervalos, ∪ ∩ \</span></a>
+      <a class="tile" href="#funciones"><i class="dot c-indigo"></i><b>02 Funciones</b><span>Im(f), inyectiva, ∘</span></a>
+      <a class="tile" href="#supinf"><i class="dot c-amber"></i><b>03 Sup / Inf</b><span>techo vs techo alcanzado</span></a>
+      <a class="tile" href="#integral"><i class="dot c-green"></i><b>04 Integral</b><span>área firmada</span></a>
+      <a class="tile" href="#sumas"><i class="dot c-orange"></i><b>05 Sumas</b><span>S* y S_*</span></a>
+      <a class="tile" href="#integrabilidad"><i class="dot c-cyan"></i><b>06 Integrabilidad</b><span>criterio ε</span></a>
+      <a class="tile" href="#acumulada"><i class="dot c-purple"></i><b>07 Acumulada</b><span>F(x)=∫ f</span></a>
+      <a class="tile" href="#limites"><i class="dot c-coral"></i><b>08 Límites</b><span>árbol de ataque</span></a>
+      <a class="tile" href="#continuidad"><i class="dot c-blue"></i><b>09 Continuidad</b><span>3 condiciones</span></a>
+      <a class="tile" href="#tipos"><i class="dot c-slate"></i><b>10 Tipos</b><span>recetas de parcial</span></a>
+      <a class="tile" href="#errores"><i class="dot c-rose"></i><b>11 Errores</b><span>trampas típicas</span></a>
+      <a class="tile" href="#formulas"><i class="dot c-slate"></i><b>12 Fórmulas</b><span>hoja de 5 minutos</span></a>
+    </div>
+
+    <section class="topic" id="conjuntos" data-keys="conjuntos intervalos union interseccion diferencia pertenencia">
+      <h2><span class="banner c-teal">01</span> Conjuntos e intervalos</h2>
+      <div class="formula">x ∈ A · x ∉ A · A ⊆ B · A ∪ B · A ∩ B · A \ B</div>
+      <p>A ∪ B = en A o en B (o ambos). A ∩ B = en los dos. A \ B = de A que no están en B.</p>
+      <table><thead><tr class="c-teal"><th>Notación</th><th>Incluye a</th><th>Incluye b</th></tr></thead><tbody>
+      <tr><td>[a, b]</td><td>sí</td><td>sí</td></tr>
+      <tr><td>(a, b)</td><td>no</td><td>no</td></tr>
+      <tr><td>[a, b)</td><td>sí</td><td>no</td></tr>
+      <tr><td>(a, b]</td><td>no</td><td>sí</td></tr>
+      <tr><td>(a, +∞)</td><td>no</td><td>—</td></tr>
+      <tr><td>(−∞, b]</td><td>—</td><td>sí</td></tr>
+      </tbody></table>
+      <div class="box bg-teal"><h3>Truco de gráfica</h3>● incluido. ○ excluido. Con ±∞ siempre paréntesis. El valor efectivo de f(a) lo marca el ●.</div>
+      <ul><li>Traducí la letra a operaciones: “en A pero no en B” = A \ B.</li><li>Dibujá la recta y marcá ● / ○ antes de operar.</li><li>5 ∈ [1, 5) es falso.</li></ul>
+    </section>
+
+    <section class="topic" id="funciones" data-keys="funciones dominio imagen inyectiva sobreyectiva biyectiva composicion">
+      <h2><span class="banner c-indigo">02</span> Funciones</h2>
+      <div class="formula">f : A → B &nbsp;&nbsp; (g ∘ f)(x) = g(f(x)) &nbsp;&nbsp; primero f, después g</div>
+      <table><thead><tr class="c-indigo"><th>Palabra</th><th>Qué es</th><th>Test</th></tr></thead><tbody>
+      <tr><td>Dominio</td><td>lo que puede entrar (A)</td><td>den ≠ 0, raíz ≥ 0, log &gt; 0</td></tr>
+      <tr><td>Codominio</td><td>salidas declaradas (B)</td><td>lo fija el enunciado</td></tr>
+      <tr><td>Im(f)</td><td>valores que realmente toma</td><td>puede ser más chico que B</td></tr>
+      <tr><td>Inyectiva</td><td>entradas distintas ⇒ salidas distintas</td><td>f(x₁)=f(x₂) ⇒ x₁=x₂</td></tr>
+      <tr><td>Sobreyectiva</td><td>todo b ∈ B se alcanza</td><td>Im(f) = B</td></tr>
+      <tr><td>Biyectiva</td><td>inyectiva y sobre</td><td>existe inversa</td></tr>
+      </tbody></table>
+      <div class="box bg-indigo"><h3>Monotonía útil</h3>Estrictamente creciente o decreciente ⇒ inyectiva. No afirmes lo contrario sin más.</div>
+      <p>Si f(1)=2 y g(2)=4, entonces (g ∘ f)(1)=4. El orden se lee de derecha a izquierda.</p>
+    </section>
+
+    <section class="topic" id="supinf" data-keys="supremo infimo maximo minimo techo piso grafica">
+      <h2><span class="banner c-amber">03</span> Supremo, ínfimo, máximo y mínimo</h2>
+      <div class="box bg-amber">
+        <h3>Arriba</h3><ul><li>sup(A) = menor techo. Puede no estar en A.</li><li>max(A) = techo que SÍ pertenece a A.</li></ul>
+        <h3>Abajo</h3><ul><li>inf(A) = mayor piso. Puede no estar en A.</li><li>min(A) = piso que SÍ pertenece a A.</li></ul>
+      </div>
+      <p><b>Modelo:</b> A = [1, 5). inf = min = 1. sup = 5 y no hay máximo porque 5 ∉ A.</p>
+      <ul><li>En una gráfica, mirá alturas (Im(f)), no el eje x.</li><li>Mayor altura = sup. Si hay ● a esa altura, también hay max.</li><li>Asíntota u ○ en el pico ⇒ hay sup/inf y no hay max/min.</li></ul>
+    </section>
+
+    <section class="topic" id="integral" data-keys="integral definida area firmada linealidad propiedades">
+      <h2><span class="banner c-green">04</span> Integral definida</h2>
+      <div class="formula">∫<sub>a</sub><sup>b</sup> f(x) dx = área firmada entre la gráfica y el eje x</div>
+      <p>Arriba del eje x: positivo. Abajo: negativo. No es siempre el área geométrica.</p>
+      <table><thead><tr class="c-green"><th>Propiedad</th><th>Uso</th></tr></thead><tbody>
+      <tr><td>∫(αf+βg)=α∫f+β∫g</td><td>sacar constantes</td></tr>
+      <tr><td>∫<sub>a</sub><sup>b</sup>+∫<sub>b</sub><sup>c</sup>=∫<sub>a</sub><sup>c</sup></td><td>despejar el tramo que falta</td></tr>
+      <tr><td>∫<sub>b</sub><sup>a</sup>=−∫<sub>a</sub><sup>b</sup></td><td>extremos al revés</td></tr>
+      <tr><td>∫<sub>a</sub><sup>a</sup>=0</td><td>inmediato</td></tr>
+      <tr><td>f≤g ⇒ ∫f≤∫g</td><td>descartar opciones</td></tr>
+      <tr><td>m≤f≤M ⇒ m(b−a)≤∫f≤M(b−a)</td><td>acotar sin calcular</td></tr>
+      <tr><td>|∫f| ≤ ∫|f|</td><td>el módulo afuera agranda</td></tr>
+      </tbody></table>
+      <div class="box bg-green"><h3>Error típico</h3>Si dan ∫<sub>1</sub><sup>8</sup> f y ∫<sub>4</sub><sup>8</sup> f, entonces ∫<sub>1</sub><sup>4</sup> f es la diferencia.</div>
+    </section>
+
+    <section class="topic" id="sumas" data-keys="particion suma superior inferior riemann darboux">
+      <h2><span class="banner c-orange">05</span> Particiones y sumas</h2>
+      <div class="formula">P = {x<sub>0</sub>,…,x<sub>n</sub>} &nbsp; Δx<sub>i</sub>=x<sub>i</sub>−x<sub>i−1</sub></div>
+      <div class="formula">S<sub>*</sub>(f,P)=Σ m<sub>i</sub> Δx<sub>i</sub> &nbsp;&nbsp; S*(f,P)=Σ M<sub>i</sub> Δx<sub>i</sub></div>
+      <p>m<sub>i</sub> = ínfimo de f en el tramo. M<sub>i</sub> = supremo. Si f es continua en el cerrado, coinciden con min y max.</p>
+      <div class="box bg-orange"><h3>4 pasos</h3>1) Subintervalos y anchos. 2) m<sub>i</sub> o M<sub>i</sub> en cada tramo. 3) Multiplicá por Δx. 4) Sumá.</div>
+      <p>Si f es creciente: m<sub>i</sub>=f(x<sub>i−1</sub>), M<sub>i</sub>=f(x<sub>i</sub>). Si es decreciente, al revés.</p>
+      <p><b>Modelo FING:</b> n partes iguales y S*−S<sub>*</sub>&lt;ε. Suele quedar (f(b)−f(a))(b−a)/n. El menor n ∈ ℕ estrictamente mayor.</p>
+    </section>
+
+    <section class="topic" id="integrabilidad" data-keys="integrable criterio epsilon continua monotona">
+      <h2><span class="banner c-cyan">06</span> Integrabilidad</h2>
+      <div class="formula">f integrable ⇔ ∀ε&gt;0 existe P con S*−S<sub>*</sub>&lt;ε</div>
+      <div class="formula">∫f = sup{inferiores} = inf{superiores}</div>
+      <ul>
+        <li>Continua en [a,b] ⇒ integrable. La flecha no se da vuelta.</li>
+        <li>Monótona en [a,b] ⇒ integrable (aunque tenga saltos).</li>
+        <li>Continua por tramos con finitos saltos ⇒ integrable en este curso.</li>
+        <li>Integrable ⇐ continua.</li>
+      </ul>
+      <div class="box bg-cyan">Si todas las sumas superiores son &gt; 5, la integral no puede ser menor que 5.</div>
+    </section>
+
+    <section class="topic" id="acumulada" data-keys="acumulada F(x) integral variable continua">
+      <h2><span class="banner c-purple">07</span> Función definida por una integral</h2>
+      <div class="formula">F(x) = ∫<sub>a</sub><sup>x</sup> f(t) dt</div>
+      <ul>
+        <li>f(t) = la de adentro. t = muda. F = acumula área firmada. x = extremo variable.</li>
+        <li>f integrable ⇒ F continua.</li>
+        <li>f continua ⇒ f integrable ⇒ F continua. No des vuelta las flechas.</li>
+        <li>F no tiene por qué ser creciente: si f es negativa, F baja.</li>
+        <li>F(a)=0. F(b)=∫<sub>a</sub><sup>b</sup> f.</li>
+      </ul>
+      <div class="box bg-purple">Mini modelo: f=1 en [0,2] y f=−1 en (2,4]. F(2)=2, F(4)=0. F es continua aunque f salte en 2.</div>
+    </section>
+
+    <section class="topic" id="limites" data-keys="limites indeterminacion factor conjugado sandwich sen piso absoluto infinito">
+      <h2><span class="banner c-coral">08</span> Límites — recetario</h2>
+      <div class="formula">lim<sub>x→a</sub> f(x)=L &nbsp; existe ⇔ L<sup>−</sup>=L<sup>+</sup></div>
+      <p>El límite puede existir aunque f(a) no exista o sea otro valor.</p>
+      <table><thead><tr class="c-coral"><th>#</th><th>Paso</th></tr></thead><tbody>
+      <tr><td>1</td><td>Sustituí. Si no hay indeterminación, listo.</td></tr>
+      <tr><td>2</td><td>¿0/0, ∞/∞, ∞−∞, 0·∞? 0/5=0 no es indeterminación.</td></tr>
+      <tr><td>3</td><td>0/0 polinomio: factorizá. x²−4=(x−2)(x+2).</td></tr>
+      <tr><td>4</td><td>0/0 con raíces: conjugado (a−b)(a+b)=a²−b².</td></tr>
+      <tr><td>5</td><td>x→±∞ polinomios: grados. No uses grados en x→número.</td></tr>
+      <tr><td>6</td><td>sen(1/x): sandwich.</td></tr>
+      <tr><td>7</td><td>Por partes, |·| o piso: laterales.</td></tr>
+      <tr><td>8</td><td>Composición: si la exterior es continua en L, entra el límite.</td></tr>
+      </tbody></table>
+      <table><thead><tr class="c-coral"><th>Herramienta</th><th>Regla</th></tr></thead><tbody>
+      <tr><td>Notable</td><td>lim<sub>x→0</sub> sen x / x = 1 &nbsp; (radianes)</td></tr>
+      <tr><td>Coseno</td><td>lim<sub>x→0</sub> (1−cos x)/x² = 1/2</td></tr>
+      <tr><td>ax/bx</td><td>lim sen(ax)/(bx) = a/b</td></tr>
+      <tr><td>Raíz</td><td>√(x²)=|x|. Si x→−∞, |x|=−x</td></tr>
+      <tr><td>NO</td><td>√(a+b) ≠ √a+√b</td></tr>
+      <tr><td>Sandwich</td><td>g≤f≤h y ambos → L ⇒ f→L</td></tr>
+      <tr><td>|A|</td><td>A si A≥0; −A si A&lt;0</td></tr>
+      <tr><td>Piso ⌊x⌋</td><td>mayor entero ≤ x. En un entero hay salto.</td></tr>
+      <tr><td>log</td><td>log 1=0; x→0⁺ ⇒ −∞; lim<sub>x→1</sub> log x/(x−1)=1</td></tr>
+      </tbody></table>
+      <div class="box bg-coral">|x−2|/(x−2): derecha 1, izquierda −1 ⇒ el límite no existe.</div>
+    </section>
+
+    <section class="topic" id="continuidad" data-keys="continuidad por partes parametros grafica tres condiciones">
+      <h2><span class="banner c-blue">09</span> Continuidad</h2>
+      <div class="formula">f continua en a ⇔ lim<sub>x→a</sub> f(x) = f(a)</div>
+      <div class="box bg-blue"><h3>Las 3 condiciones</h3>1) f(a) existe. 2) el límite existe (L<sup>−</sup>=L<sup>+</sup>). 3) son iguales.</div>
+      <p><b>Por partes:</b> en cada corte, laterales con el tramo correcto. f(a) con el tramo que tiene el igual. Si hay parámetros, sale un sistema.</p>
+      <p>Polinomios: continuos en ℝ. Racionales: donde den ≠ 0. sen y cos: siempre. Raíz: en su dominio.</p>
+      <table><thead><tr class="c-blue"><th>Caso</th><th>Conclusión</th></tr></thead><tbody>
+      <tr><td>L<sup>−</sup>=L<sup>+</sup>=f(a)</td><td>continua</td></tr>
+      <tr><td>L<sup>−</sup>=L<sup>+</sup> ≠ f(a)</td><td>hay límite, no es continua</td></tr>
+      <tr><td>L<sup>−</sup> ≠ L<sup>+</sup></td><td>no hay límite bilateral</td></tr>
+      </tbody></table>
+      <div class="box bg-blue">Mini modelo: f(x)=x+k si x&lt;1, f(x)=3x si x≥1. Continuidad en 1 ⇒ 1+k=3 ⇒ k=2.</div>
+    </section>
+
+    <section class="topic" id="tipos" data-keys="tipos ejercicio parcial receta multiple opcion">
+      <h2><span class="banner c-slate">10</span> Tipos de ejercicio</h2>
+      <div class="box bg-coral"><h3>A — Límite algebraico</h3>Sustituí. 0/0: factor o conjugado. ±∞: grados. sen cerca de 0: notables.</div>
+      <div class="box bg-blue"><h3>B — Por partes / parámetros</h3>Cortes, laterales, f(a) con el igual. Si solo piden que exista el límite, no hace falta igualar a f(a).</div>
+      <div class="box bg-orange"><h3>C — Sumas</h3>Tramos, inf/sup, Δx, sumá. Si piden S*−S<sub>*</sub>&lt;ε, despejá n entero.</div>
+      <div class="box bg-green"><h3>D — Propiedades de integral</h3>Linealidad, partir intervalos, signo, área firmada.</div>
+      <div class="box bg-purple"><h3>E — F acumulada</h3>f integrable ⇒ F continua. No confundas f con F.</div>
+      <div class="box bg-amber"><h3>F — Gráfica</h3>● = valor. ○ ≠ valor. Laterales = altura de la curva.</div>
+      <div class="box bg-indigo"><h3>G — Inyectiva / imagen</h3>Estrictamente mono ⇒ inyectiva. Sobre: Im(f)=B. Composición: adentro primero.</div>
+      <div class="box bg-cyan"><h3>H — V/F conceptual</h3>integrable ⇐ continua. 0/0 no vale 0. sup no tiene que pertenecer.</div>
+    </section>
+
+    <section class="topic" id="errores" data-keys="errores trampas scanner">
+      <h2><span class="banner c-rose">11</span> Errores que ya no hay que cometer</h2>
+      <ul>
+        <li>Cancelar en una suma sin factorizar.</li>
+        <li>Regla de grados en x → número.</li>
+        <li>Creer que 0/0 = 0.</li>
+        <li>Olvidar √(x²)=|x|.</li>
+        <li>Confundir f(t) con F(x).</li>
+        <li>“Integrable ⇒ continua”.</li>
+        <li>Olvidar f(a) al hablar de continuidad.</li>
+        <li>Tomar el ○ como valor de la función.</li>
+        <li>Confundir supremo con máximo.</li>
+        <li>√(a+b)=√a+√b o sen(a+b)=sen a + sen b.</li>
+        <li>Cambiar una respuesta por ansiedad, sin ver un error concreto.</li>
+      </ul>
+    </section>
+
+    <section class="topic" id="formulas" data-keys="formulas trig sen cos hoja rapida">
+      <h2><span class="banner c-slate">12</span> Hoja de 5 minutos</h2>
+      <table><thead><tr class="c-slate"><th>Ángulo</th><th>sen</th><th>cos</th></tr></thead><tbody>
+      <tr><td>0</td><td>0</td><td>1</td></tr>
+      <tr><td>π/6</td><td>1/2</td><td>√3/2</td></tr>
+      <tr><td>π/4</td><td>√2/2</td><td>√2/2</td></tr>
+      <tr><td>π/3</td><td>√3/2</td><td>1/2</td></tr>
+      <tr><td>π/2</td><td>1</td><td>0</td></tr>
+      <tr><td>π</td><td>0</td><td>−1</td></tr>
+      <tr><td>3π/2</td><td>−1</td><td>0</td></tr>
+      <tr><td>2π</td><td>0</td><td>1</td></tr>
+      </tbody></table>
+      <div class="box bg-slate">Puntaje: correcta +5 · incorrecta −1 · blanco 0.<br>Primera vuelta: las rápidas. Segunda: álgebra y gráficas.<br>Antes de entregar: signos, laterales, ●/○, estrictos, scanner.</div>
+      <p class="note">No estudiar para el 29/09: Bolzano, Weierstrass, derivadas, L’Hôpital, integrales impropias.</p>
+    </section>
+  </main>
+
+  <nav class="navbottom">
+    <a href="#inicio">Inicio</a>
+    <a href="#conjuntos">Conjuntos</a>
+    <a href="#funciones">Funciones</a>
+    <a href="#supinf">Sup/Inf</a>
+    <a href="#integral">Integral</a>
+    <a href="#sumas">Sumas</a>
+    <a href="#integrabilidad">Integrab.</a>
+    <a href="#acumulada">F(x)</a>
+    <a href="#limites">Límites</a>
+    <a href="#continuidad">Cont.</a>
+    <a href="#tipos">Tipos</a>
+    <a href="#errores">Errores</a>
+    <a href="#formulas">Fórmulas</a>
+  </nav>
+  <div class="toast" id="toast"></div>
+  <script src="./app.js"></script>
+</body>
+</html>
