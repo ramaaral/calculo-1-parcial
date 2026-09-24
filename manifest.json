@@ -1,0 +1,20 @@
+{
+  "name": "Cálculo 1 — Guía primer parcial",
+  "short_name": "Cálculo 1",
+  "description": "Apuntes y guía de resolución CDIV FING Udelar. Primer parcial 29/09/2026.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0F2C59",
+  "theme_color": "#0F2C59",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
